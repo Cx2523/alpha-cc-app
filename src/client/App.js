@@ -8,7 +8,7 @@ export default class App extends Component {
   componentDidMount() {
     fetch('https://alpha-cc-api.azurewebsites.net/api/values')
       .then(res => res.json())
-      .then(data => this.setState({ data: data }));
+      .then(data => this.setState({ data }));
   }
 
   render() {
@@ -16,7 +16,7 @@ export default class App extends Component {
     return (
       <div>
         <img src={ReactImage} alt="react" />
-        {data.map(d => <h1>d</h1>)}
+        {data ? data.map(d => <h1>{d}</h1>) : '...loading'}
       </div>
     );
   }
